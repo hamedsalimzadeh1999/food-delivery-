@@ -1,5 +1,8 @@
 from django.urls import path , include
-from views import adminlogin,adminview,
+from .views import adminloginview,adminpage,adminauth
 urlpatterns = [
-    path()
+    path('',adminloginview ,name="adminlogin"),
+    path('adminauth/',adminauth ,name="adminauth"),
+    path('adminpage',adminpage ,name="adminpage"),
+    
 ]
