@@ -15,9 +15,15 @@
         </form>
   
       <!-- Remind Passowrd -->
-      <!-- <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
-      </div> -->
+      {% for mesages in messages %}
+      <div id="formFooter">
+        <div class="alert alert-danger" role="alert">
+          <p class="underlineHover">{{mesages}}</p>
+        </div>
+        
+      </div>
+      {% endfor %}
+      
   
     </div>
   </div>

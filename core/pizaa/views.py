@@ -13,15 +13,16 @@ def adminauth(request,):
     password = request.POST["password"]
     user = authenticate(username = username,password = password)
     if user is None:
+        messages.add_message(request,messages.ERROR,"invalid password")
         return redirect('adminlogin')
-
-
 
     else :
         login(request,user)
         return redirect("adminpage")
 
-
+def logoutadmin(request):
+    logout(request)
+    return redirect('adminlogin')
 
 def adminpage (request):
     return render(request,'admin.html')
