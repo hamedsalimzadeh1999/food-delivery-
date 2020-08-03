@@ -1,0 +1,12 @@
+{% extends 'share/_base.html' %}
+{% block content %}
+
+{% for titile in pizzalist %}
+
+<h2>{{titile.title}}</h2>
+<h2>{{titile.price}}</h2>
+<h2>{{titile.info}}</h2>
+
+{% endfor %}
+
+{% endblock %}
