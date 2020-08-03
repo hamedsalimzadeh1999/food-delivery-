@@ -38,3 +38,18 @@ def viewpizaa(request):
     pizzalist = pizza.objects.all()
     context = {"pizzalist":pizzalist}
     return render(request , "listview.html", context )
+def editpizaa(request,pizzaid):
+    context = {'pizzaid':pizzaid}
+    title = request.POST.get('title')
+    price = request.POST.get('price')
+    info  = request.POST.get('info')
+    order = pizza.objects.filter(id = pizzaid)[0]
+    order.title = title
+    order.price  = price 
+    order.info   = info  
+    order.save()
+    return redirect('pizzaview')
+def deletepizaa(request,pizzaid):
+    context = {'pizzaid':pizzaid}
+    pizza.objects.filter(id = pizzaid)[0].delete()
+    return redirect('pizzaview')
