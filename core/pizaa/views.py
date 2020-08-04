@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import pizza
+from .models import pizza ,Customer
 
 
 def adminloginview(request):
@@ -53,3 +53,17 @@ def deletepizaa(request,pizzaid):
     context = {'pizzaid':pizzaid}
     pizza.objects.filter(id = pizzaid)[0].delete()
     return redirect('pizzaview')
+def HomePage(request):
+    return render(request ,"index.html")
+def signupuser(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    phonenumber = request.POST['phonenumber']
+    if User.objects.filter(username =username).exists():
+        messages.add_message(request,messages.ERROR,"user exiest")
+        return redirect('index')
+    User.objects.create_user(username = username , password=password).save()
+    lastobject = len(User.objects.all())-1
+    Customer(Customerid = User.objects.all()[lastobject].id,PhoneNumber=phonenumber)
+    messages.add_message(request,messages.ERROR,"user make")
+    return redirect('index')

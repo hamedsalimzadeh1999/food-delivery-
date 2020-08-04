@@ -1,7 +1,9 @@
 from django.urls import path , include
-from .views import adminloginview,adminpage,adminauth,logoutadmin,add_pizza,viewpizaa,editpizaa,deletepizaa
+from .views import adminloginview,adminpage,adminauth,logoutadmin,add_pizza,viewpizaa,editpizaa,deletepizaa,HomePage,signupuser
 urlpatterns = [
-    path('',adminloginview ,name="adminlogin"),
+    path('',HomePage ,name="index"),
+    path('signup/',signupuser ,name="signup"),
+    path('login/',adminloginview ,name="adminlogin"),
     path('adminauth/',adminauth ,name="adminauth"),
     path('adminpage/',adminpage ,name="adminpage"),
     path('logout/',logoutadmin ,name="logout"),
