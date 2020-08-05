@@ -1,0 +1,17 @@
+{% extends 'share/_base.html' %}
+{% block content %}
+ <form action="/customauth/" method="POST">
+        {% csrf_token %}
+        <input class="fadeIn second" type="text" name="username" placeholder="username">
+        <input class="fadeIn third"  type="text" name="password" placeholder="password">
+        <input class="fadeIn fourth" type="submit">
+        </form>
+         {% for mesages in messages %}
+      <div id="formFooter">
+        <div class="alert alert-danger" role="alert">
+          <p class="underlineHover">{{mesages}}</p>
+        </div>
+        
+      </div>
+      {% endfor %}
+{% endblock content %}

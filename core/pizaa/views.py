@@ -67,3 +67,23 @@ def signupuser(request):
     Customer(Customerid = User.objects.all()[lastobject].id,PhoneNumber=phonenumber)
     messages.add_message(request,messages.ERROR,"user make")
     return redirect('index')
+def coustomerpage (request):
+    context ={'pizza' : pizza.objects.all()}
+    return render(request,'userpage.html',context)
+def loginuser(request):
+    return render(request,'userlogin.html')
+def userauth (request):
+    username = request.POST["username"]
+    password = request.POST["password"]
+    user = authenticate(username = username,password = password)
+    if user is None:
+        messages.add_message(request,messages.ERROR,"invalid password")
+        return redirect('userlogin')
+
+    else :
+        login(request,user)
+        messages.add_message(request,messages.ERROR,f'welcome {user}')
+        return redirect("userpage")
+
+def logoutuser(request):
+    return redirect('index')

@@ -1,0 +1,26 @@
+{% extends 'share/_base.html' %}
+{% block content %}
+ {% for mesages in messages %}
+      <div id="formFooter">
+        <div class="alert alert-info" role="alert">
+          <p class="underlineHover">{{mesages}}</p>
+        </div>
+        
+      </div>
+      {% endfor %}
+<h1>
+salam moshtari :)
+</h1>
+{% for pizza in pizza %}
+<div class="card" style="width: 18rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <div class="card-body">
+      <h5 class="card-title">{{pizza.title}}</h5>
+      <p class="card-text">{{pizza.info}}</p>
+      <footer class="blockquote-footer">{{pizza.price}}</footer>
+     
+    </div>
+  </div>
+  
+{% endfor %}
+{% endblock content %}
