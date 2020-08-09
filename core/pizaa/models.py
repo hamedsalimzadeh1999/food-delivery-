@@ -8,3 +8,10 @@ class pizza (models.Model):
 class Customer(models.Model):
     Customerid = models.AutoField(primary_key=True)
     PhoneNumber = models.PositiveIntegerField()
+
+class ordermodel(models.Model):
+    username = models.CharField(max_length=50)
+    pnonenumber = models.PositiveIntegerField()
+    address = models.TextField()
+    ordertime = models.DateTimeField(auto_now_add=True)
+

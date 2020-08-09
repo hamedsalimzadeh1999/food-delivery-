@@ -5,12 +5,9 @@
         <div class="alert alert-info" role="alert">
           <p class="underlineHover">{{mesages}}</p>
         </div>
-        
       </div>
       {% endfor %}
-<h1>
-salam moshtari :)
-</h1>
+<div class="container ">
 {% for pizza in pizza %}
 <div class="card" style="width: 18rem;">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
@@ -18,9 +15,20 @@ salam moshtari :)
       <h5 class="card-title">{{pizza.title}}</h5>
       <p class="card-text">{{pizza.info}}</p>
       <footer class="blockquote-footer">{{pizza.price}}</footer>
-     
-    </div>
+      <input type="number" min="0" value="0" name="{{pizza.id}}"  name="quantity">
+      
+   
+    
   </div>
-  
+</div>
 {% endfor %}
+
+</div>
+<br>
+
+<div class="form-group">
+<input type="text" class="form-control"  placeholder="address"  name="address">
+<button type="submit" class="btn btn-primary">Submit</button>
+</div> 
+
 {% endblock content %}
