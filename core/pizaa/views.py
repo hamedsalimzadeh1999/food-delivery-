@@ -55,6 +55,10 @@ def deletepizaa(request,pizzaid):
     return redirect('pizzaview')
 def HomePage(request):
     return render(request ,"index.html")
+def customerpage(request):
+    pizzalist = pizza.objects.all()
+    context = {'pizza' : pizzalist}
+    return render(request,'customerpage.html',context) 
 def signupuser(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -66,10 +70,7 @@ def signupuser(request):
     lastobject = len(User.objects.all())-1
     Customer(Customerid = User.objects.all()[lastobject].id,PhoneNumber=phonenumber)
     messages.add_message(request,messages.ERROR,"user make")
-    return redirect('index')
-def coustomerpage (request):
-    context ={'pizza' : pizza.objects.all()}
-    return render(request,'userpage.html',context)
+    return redirect('customerpage')
 def loginuser(request):
     return render(request,'userlogin.html')
 def userauth (request):
@@ -79,11 +80,28 @@ def userauth (request):
     if user is None:
         messages.add_message(request,messages.ERROR,"invalid password")
         return redirect('userlogin')
-
     else :
         login(request,user)
         messages.add_message(request,messages.ERROR,f'welcome {user}')
-        return redirect("userpage")
+        return redirect("customerpage")
 
 def logoutuser(request):
     return redirect('index')
+
+def orderbascket(request):
+	username = request.user.username
+	phoneno = Customer.objects.filter(userid = request.user.id)[0].PhoneNumber
+	address = request.POST['address']
+	ordereditems = ""
+	for pizza in pizza.objects.all():
+		pizzaid = pizza.id
+		name = pizza.title
+		price = pizza.price
+		quantity = request.POST.get(str(pizzaid)," ")
+
+		if str(quantity)!="0" and str(quantity)!=" ":
+			ordereditems = ordereditems + name+" " + "price : " + str(int(quantity)*int(price)) +" "+ "quantity : "+ quantity+"    "
+
+	ordermodel(username = username,phoneno = pnonenumber,address = address,ordereditems = ordereditems).save()
+	messages.add_message(request,messages.ERROR,"order succesfully placed")
+	return redirect('customerpage')
