@@ -1,0 +1,25 @@
+
+{% extends 'share/_base.html' %}
+
+{% for mesaage  in messages %}
+mesaage
+{% endfor %}
+
+
+{% block content %}
+
+{% for titile in pizza %}
+<div class="card" style="width: 18rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <div class="card-body">
+      <h5 class="card-title">{{titile.title}}</h5>
+      <p class="card-text">{{titile.info}}</p>
+      <footer class="blockquote-footer">{{titile.price}}</footer>
+      
+      
+    </div>
+  </div>
+  
+{% endfor %}
+
+{% endblock %}
