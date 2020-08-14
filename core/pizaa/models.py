@@ -12,7 +12,7 @@ class Customer(models.Model):
     addres = models.CharField(max_length=50)
 class ordermodel(models.Model):
     username = models.CharField(max_length=50)
-    pnonenumber = models.PositiveIntegerField()
+    phonenumber = models.PositiveIntegerField()
     address = models.TextField(max_length=50)
     ordertime = models.DateTimeField(auto_now_add=True)
     ordereditems = models.CharField(max_length = 10)

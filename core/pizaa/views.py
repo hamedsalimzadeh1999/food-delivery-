@@ -88,20 +88,13 @@ def userauth (request):
 def logoutuser(request):
     return redirect('index')
 
-def orderbascket(request):
-	username = request.user.username
-	phoneno = Customer.objects.filter(userid = request.user.id)[0].PhoneNumber
-	address = request.POST['address']
-	ordereditems = ""
-	for pizza in pizza.objects.all():
-		pizzaid = pizza.id
-		name = pizza.title
-		price = pizza.price
-		quantity = request.POST.get(str(pizzaid)," ")
 
-		if str(quantity)!="0" and str(quantity)!=" ":
-			ordereditems = ordereditems + name+" " + "price : " + str(int(quantity)*int(price)) +" "+ "quantity : "+ quantity+"    "
+def placeorder(request):
+    username =  request.POST["username"]
+    phonenumber = request.POST["phonenumber"]
+    address = request.POST["address"]
+    ordereditems = request.POST["ordereditems"]
+    ordermodel(username = 'username',phonenumber = 'phonenumber',address = 'address',ordereditems = 'ordereditems').save()
+    messages.add_message(request,message.Error,"your order is done")
+    return redirect('customerpage')
 
-	ordermodel(username = username,phoneno = pnonenumber,address = address,ordereditems = ordereditems).save()
-	messages.add_message(request,messages.ERROR,"order succesfully placed")
-	return redirect('customerpage')
