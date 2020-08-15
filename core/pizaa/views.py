@@ -90,8 +90,8 @@ def logoutuser(request):
 
 
 def placeorder(request):
-    username =  request.POST["username"]
-    phonenumber = request.POST["phonenumber"]
+    username =  request.user.username
+    phonenumber = Customer.objects.filter(userid = request.userid)
     address = request.POST["address"]
     ordereditems = request.POST["ordereditems"]
     ordermodel(username = 'username',phonenumber = 'phonenumber',address = 'address',ordereditems = 'ordereditems').save()

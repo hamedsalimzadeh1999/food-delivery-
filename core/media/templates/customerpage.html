@@ -2,12 +2,13 @@
 {% extends 'share/_base.html' %}
 
 {% for mesaage  in messages %}
-mesaage
+<h1>mesaage</h1>
 {% endfor %}
 
 
 {% block content %}
-
+<form action="/coustomerorder" method="POST">
+  {% csrf_token %}
 {% for titile in pizza %}
 <div class="card" style="width: 18rem;">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
@@ -23,5 +24,6 @@ mesaage
   
 {% endfor %}
 <input type="text" class="form-control" placeholder="what is your address ">
-<a class="btn btn-success" href="#">Done</a>
+<input class="btn btn-success" type="submit" href="#">Done</input>
+</form>
 {% endblock %}
