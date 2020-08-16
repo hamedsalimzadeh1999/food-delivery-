@@ -1,2 +1,5 @@
 venv
-core/db.sqlite3
+core/media/upload
+core/settings.ini
+.vscode
+__pycache__
