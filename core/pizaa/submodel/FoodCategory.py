@@ -21,5 +21,5 @@ class Food(Draft_publish):
 
     class Meta:
         ordering = ['-published_at']
-        verbose_name = 'article'
-        verbose_name_plural = 'articles'
+        verbose_name = 'Food'
+        verbose_name_plural = 'Foods'
