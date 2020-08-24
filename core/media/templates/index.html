@@ -102,7 +102,7 @@
                       <div class="product__inner">
                           <div class="pro__thumb">
                               <a href="#">
-                                  <img src="images/product/1.png" alt="product images">
+                                  <img src="{{ title.image.url }}" alt="product images">
                               </a>
                           </div>
                           <div class="product__hover__info">
@@ -114,10 +114,10 @@
                           </div>
                       </div>
                       <div class="product__details">
-                          <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                          <h2><a href="product-details.html">{{title.name}}</a></h2>
                           <ul class="product__price">
-                              <li class="old__price">$16.00</li>
-                              <li class="new__price">$10.00</li>
+                              
+                              <li class="new__price">${{title.price}}</li>
                           </ul>
                       </div>
                   </div>
